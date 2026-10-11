@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="You are invited to Oding's 87th Birthday! Sunday, November 29, 2026, 3:30 PM at Villa Juanita, Malolos, Bulacan.">
+<meta property="og:title" content="You're invited to Oding's 87th Birthday!">
+<meta property="og:description" content="Sunday, November 29, 2026 · 3:30 PM · Villa Juanita, Malolos, Bulacan">
+<title>Oding's 87th Birthday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Outfit:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: two scenes on one page. Scene 1 is a phone lock screen on a dusk fiesta street;
+   tapping the invite notification opens scene 2, the invitation itself, as a single centred column. */
+:root{
+  --night:#24112c; --plum:#4b1e4f; --rose:#a8445e;
+  --mango:#ffc23d; --fiesta:#e8402e; --capiz:#fff4e2; --leaf:#2f9d73; --ink:#2a1430;
+  --display:"Shrikhand", "Georgia", serif;
+  --body:"Outfit", "Trebuchet MS", "Segoe UI", sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{
+  background:var(--night); color:var(--capiz); font-family:var(--body); font-size:16px; line-height:1.5;
+  overflow-x:hidden;
+}
+.sky{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(70% 45% at 50% 0%, rgba(255,194,61,.35), transparent 70%),
+    radial-gradient(90% 60% at 50% 110%, rgba(232,64,46,.30), transparent 70%),
+    linear-gradient(180deg, var(--plum) 0%, var(--night) 55%, #1a0b20 100%);
+}
+.lights{position:fixed; inset:0; z-index:0; pointer-events:none}
+.lights i{position:absolute; width:6px; height:6px; border-radius:50%; background:var(--mango); box-shadow:0 0 12px 3px rgba(255,194,61,.6); animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.35}50%{opacity:1}}
+
+.bunting{position:fixed; left:0; right:0; top:0; height:80px; z-index:2; pointer-events:none}
+.bunting svg{width:100%; height:100%; display:block}
+.flag{transform-box:fill-box; transform-origin:50% 0; animation:sway 3.2s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+
+.scene{position:relative; z-index:1; min-height:100vh; padding:96px 16px 40px; display:flex; flex-direction:column; align-items:center}
+
+/* ---------- Scene 1: phone ---------- */
+#lock{justify-content:center; gap:22px}
+.kicker{font-weight:800; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:var(--mango); text-align:center; margin:0}
+.phone{
+  width:min(300px, 74vw, calc((100vh - 250px) / 2.05)); min-width:220px; aspect-ratio:9/19.2; max-width:100%;
+  background:#0d0a0f; border-radius:48px; padding:11px; position:relative;
+  box-shadow:0 0 0 2px #3a2c3f, 0 0 0 6px #120c15, 0 40px 80px rgba(0,0,0,.6), 0 0 120px rgba(255,194,61,.22);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .5s ease;
+}
+.phone.out{transform:scale(1.15) translateY(-20px); opacity:0}
+.screen{position:relative; height:100%; border-radius:38px; overflow:hidden; background:#5a2a55}
+.wall{position:absolute; inset:0; background:radial-gradient(90% 50% at 50% 100%, #f0a35a 0%, #b4506a 45%, #5a2a55 100%)}
+.wall img{position:absolute; left:0; right:0; bottom:0; width:100%; height:auto; display:block;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 22%); mask-image:linear-gradient(180deg, transparent 0%, #000 22%)}
+.island{position:absolute; z-index:3; top:11px; left:50%; transform:translateX(-50%); width:92px; height:27px; border-radius:20px; background:#000}
+.clock{position:absolute; z-index:2; top:46px; left:0; right:0; text-align:center; color:#fff; text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.clock .d{font-size:14px; font-weight:500}
+.clock .t{font-weight:700; font-size:70px; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+
+.notif{
+  position:absolute; z-index:4; left:10px; right:10px; top:160px;
+  display:flex; gap:11px; align-items:flex-start; text-align:left;
+  padding:12px; border:0; border-radius:22px; cursor:pointer; font:inherit; color:var(--ink);
+  background:rgba(255,244,226,.9); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  animation:drop .9s .5s cubic-bezier(.2,1.35,.4,1) both;
+}
+.notif:hover{transform:translateY(-2px)}
+.notif:focus-visible,.cta:focus-visible,.btn:focus-visible,.back:focus-visible{outline:3px solid var(--mango); outline-offset:3px}
+@keyframes drop{from{transform:translateY(-40px); opacity:0}to{transform:none; opacity:1}}
+.appicon{flex:none; width:40px; height:40px; border-radius:11px; display:grid; place-items:center; background:var(--fiesta); color:var(--capiz); font-family:var(--display); font-size:18px; line-height:1}
+.ntext{min-width:0; flex:1; display:flex; flex-direction:column; gap:1px}
+.nmeta{display:flex; justify-content:space-between; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; opacity:.55}
+.ntitle{font-weight:800; font-size:15px; line-height:1.25}
+.nbody{font-size:13px}
+.nbody b{color:var(--fiesta)}
+
+.cta{
+  border:0; cursor:pointer; font:800 15px var(--body); letter-spacing:.04em; color:var(--ink);
+  background:var(--mango); padding:14px 30px; border-radius:999px;
+  box-shadow:0 0 0 0 rgba(255,194,61,.7); animation:pulse 2.2s 1.6s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,194,61,.65)}70%{box-shadow:0 0 0 18px rgba(255,194,61,0)}100%{box-shadow:0 0 0 0 rgba(255,194,61,0)}}
+.hint{margin:0; font-size:14px; opacity:.75; text-align:center}
+
+/* ---------- Scene 2: invitation ---------- */
+#invite{gap:26px; animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0; transform:translateY(30px)}to{opacity:1; transform:none}}
+.back{align-self:flex-start; max-width:520px; width:100%; margin:0 auto; background:none; border:0; padding:4px 0; color:var(--mango); font:700 14px var(--body); cursor:pointer; text-align:left}
+.head{text-align:center; display:flex; flex-direction:column; gap:6px; max-width:520px}
+.head .kicker{margin-bottom:2px}
+h1{font-family:var(--display); font-weight:400; margin:0; font-size:clamp(38px, 10vw, 58px); line-height:1.05; color:var(--capiz); text-wrap:balance; text-shadow:0 4px 0 var(--fiesta)}
+.sub{margin:0; font-size:17px; opacity:.85}
+
+.poster{
+  width:min(340px, 86vw); max-width:100%; padding:10px; border-radius:6px; background:var(--capiz);
+  box-shadow:0 30px 60px rgba(0,0,0,.5); transform:rotate(-1.5deg);
+}
+.poster img{display:block; width:100%; height:auto; border-radius:2px}
+
+/* ticket */
+.ticket{
+  width:100%; max-width:440px; display:grid; grid-template-columns:1fr auto; color:var(--ink);
+  background:var(--mango); border-radius:16px; position:relative; overflow:hidden;
+}
+.ticket::before,.ticket::after{content:""; position:absolute; right:104px; width:22px; height:22px; border-radius:50%; background:var(--night)}
+.ticket::before{top:-11px}.ticket::after{bottom:-11px}
+.tleft{padding:16px 18px; min-width:0}
+.tlabel{font-size:11px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; opacity:.7}
+.tline{font-weight:700; font-size:17px; margin-top:2px}
+.tright{width:115px; border-left:2px dashed rgba(42,20,48,.35); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px 6px}
+.tnum{font-family:var(--display); font-size:46px; line-height:1}
+.tunit{font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase}
+
+.card{
+  width:100%; max-width:440px; background:var(--capiz); color:var(--ink); border-radius:20px; padding:22px 20px;
+  display:flex; flex-direction:column; gap:16px; box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.row{display:grid; grid-template-columns:78px 1fr; gap:12px; align-items:start}
+.k{font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--rose); padding-top:4px}
+.k span{display:block; font-weight:500; letter-spacing:.06em; text-transform:none; font-size:12px; color:#8a6a7d}
+.v{font-size:17px; font-weight:600; min-width:0}
+.v small{display:block; font-weight:400; font-size:14px; color:#6f5466}
+.count{border-top:1px dashed #d9bfae; padding-top:14px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap}
+.count b{font-family:var(--display); font-weight:400; font-size:30px; color:var(--fiesta); font-variant-numeric:tabular-nums}
+.count span{font-size:14px; color:#6f5466}
+
+.actions{width:100%; max-width:440px; display:flex; flex-direction:column; gap:12px}
+.btn{display:flex; align-items:center; justify-content:center; gap:10px; text-decoration:none; font-weight:800; font-size:17px; padding:16px 20px; border-radius:16px; transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--fiesta); color:var(--capiz); box-shadow:0 6px 0 #9e2418}
+.btn.secondary{background:transparent; color:var(--capiz); border:2px solid rgba(255,244,226,.5)}
+.btn svg{width:20px; height:20px; flex:none}
+.note{margin:0; font-size:14px; opacity:.8; text-align:center; max-width:440px}
+.thanks{font-family:var(--display); font-size:24px; color:var(--mango); text-align:center; margin:6px 0 0}
+
+@media (prefers-reduced-motion:reduce){
+  .flag,.lights i,.notif,.cta,#invite{animation:none}
+  .phone{transition:none}
+}
+</style>
+</head>
+<body>
+
+
+<div class="sky" aria-hidden="true"></div>
+<div class="lights" id="lights" aria-hidden="true"></div>
+<div class="bunting" aria-hidden="true"><svg id="flags" viewBox="0 0 1200 80" preserveAspectRatio="none"></svg></div>
+
+<!-- Scene 1 -->
+<main class="scene" id="lock">
+  <p class="kicker">Mabuhay! May mensahe ka</p>
+  <div class="phone" id="phone">
+    <div class="screen">
+      <div class="wall"><img src="../face.jpg" width="480" height="480" alt="Cartoon portrait of Oding"></div>
+      <div class="island"></div>
+      <div class="clock"><div class="d">Sunday, November 29</div><div class="t">3:30</div></div>
+      <button class="notif" id="notif" type="button">
+        <span class="appicon" aria-hidden="true">87</span>
+        <span class="ntext">
+          <span class="nmeta"><span>Fiesta invite</span><span>now</span></span>
+          <span class="ntitle">You are invited to Oding's 87th Birthday!</span>
+          <span class="nbody"><b>Tap here</b> to open your invitation</span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <button class="cta" id="cta" type="button">Tap here to open</button>
+  <p class="hint" id="hint">Villa Juanita · Malolos, Bulacan</p>
+</main>
+
+<!-- Scene 2 -->
+<main class="scene" id="invite" hidden>
+  <button class="back" id="back" type="button">← Back</button>
+
+  <header class="head">
+    <p class="kicker">Inaanyayahan ka namin</p>
+    <h1>Oding's 87th Birthday</h1>
+    <p class="sub">A fiesta for family and friends</p>
+  </header>
+
+  <figure class="poster" style="margin:0">
+    <img src="../poster.jpg" width="1000" height="1415" alt="Oding's birthday invitation: November 29, 2026, 3:30 in the afternoon, Villa Juanita Private Resort, Malolos, Bulacan">
+  </figure>
+
+  <div class="ticket" id="ticket" hidden>
+    <div class="tleft">
+      <div class="tlabel">Reserved for you</div>
+      <div class="tline" id="tline">We have reserved seats in your honor.</div>
+    </div>
+    <div class="tright"><div class="tnum" id="tnum">1</div><div class="tunit" id="tunit">seat</div></div>
+  </div>
+
+  <section class="card" aria-label="Event details">
+    <div class="row"><div class="k">When<span>Kailan</span></div><div class="v">Sunday, November 29, 2026<small>3:30 in the afternoon</small></div></div>
+    <div class="row"><div class="k">Where<span>Saan</span></div><div class="v">Villa Juanita<small>Malolos, Bulacan</small></div></div>
+    <div class="count"><b id="days">–</b><span id="daysLabel">days to go</span></div>
+  </section>
+
+  <div class="actions">
+    <a class="btn primary" href="https://forms.gle/iqE61ptChsfPKk357" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      RSVP now
+    </a>
+    <a class="btn secondary" href="https://maps.app.goo.gl/cSR2YkCqfYA1hiTc7" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      Open in Google Maps
+    </a>
+  </div>
+  <p class="note" id="note">Please let us know if you can come so we can prepare for you.</p>
+  <p class="thanks">Salamat po!</p>
+</main>
+
+<script>
+(function(){
+  // Seats from link: #seats-1 … #seats-5
+  var seats = 4;
+  if (seats){
+    var word = seats === 1 ? 'seat' : 'seats';
+    document.getElementById('ticket').hidden = false;
+    document.getElementById('tnum').textContent = seats;
+    document.getElementById('tunit').textContent = word;
+    document.getElementById('tline').textContent = 'We have reserved ' + seats + ' ' + word + ' in your honor.';
+    document.getElementById('note').textContent = seats === 1
+      ? 'Please RSVP so we can save your seat.'
+      : 'Please RSVP for up to ' + seats + ' guests, including yourself.';
+    document.getElementById('hint').textContent = seats + ' ' + word + ' reserved for you · Villa Juanita, Malolos';
+  }
+
+  // Banderitas
+  var cols=['#e8402e','#ffc23d','#2f9d73','#3b7dd8','#e75ea3','#fff4e2','#f07a2a'];
+  var n=26, w=1200/n, s='<path d="M0 6 Q600 40 1200 6" stroke="#1a0b20" stroke-width="2" fill="none"/>';
+  for(var i=0;i<n;i++){
+    var x=i*w+w/2, t=x/1200, y=6+(1-Math.pow(2*t-1,2))*17;
+    s+='<path class="flag" style="animation-delay:'+(-(i%6)*.5)+'s" d="M'+(x-w*.4)+' '+y+' L'+(x+w*.4)+' '+y+' L'+x+' '+(y+40)+' Z" fill="'+cols[i%cols.length]+'"/>';
+  }
+  document.getElementById('flags').innerHTML=s;
+
+  // String lights
+  var L=document.getElementById('lights'), h='';
+  for(var j=0;j<22;j++){
+    h+='<i style="left:'+(4+((j*41)%92))+'%;top:'+(12+((j*67)%80))+'%;animation-delay:'+(-(j%7)*.45)+'s;opacity:.5"></i>';
+  }
+  L.innerHTML=h;
+
+  // Countdown to Nov 29 2026, 3:30 PM Manila (UTC+8)
+  var target=Date.UTC(2026,10,29,7,30,0);
+  var diff=target-Date.now(), days=Math.ceil(diff/86400000);
+  var dEl=document.getElementById('days'), lEl=document.getElementById('daysLabel');
+  if(diff>0 && days>1){ dEl.textContent=days; lEl.textContent='days to go'; }
+  else if(diff>0){ dEl.textContent='Bukas na!'; lEl.textContent='See you tomorrow'; }
+  else if(diff>-6*3600000){ dEl.textContent='Today!'; lEl.textContent='See you at the fiesta'; }
+  else { dEl.textContent='Salamat!'; lEl.textContent='Thank you for celebrating with us'; }
+
+  var lock=document.getElementById('lock'), inv=document.getElementById('invite'), phone=document.getElementById('phone');
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function open(){
+    phone.classList.add('out');
+    setTimeout(function(){
+      lock.hidden=true; inv.hidden=false; window.scrollTo(0,0);
+      document.getElementById('back').focus({preventScroll:true});
+    }, reduce?0:420);
+  }
+  function close(){
+    inv.hidden=true; lock.hidden=false; phone.classList.remove('out'); window.scrollTo(0,0);
+  }
+  document.getElementById('notif').addEventListener('click',open);
+  document.getElementById('cta').addEventListener('click',open);
+  document.getElementById('back').addEventListener('click',close);
+})();
+</script>
+
+</body>
+</html>
